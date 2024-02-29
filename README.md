@@ -76,13 +76,5 @@ Alguns exemplos de editor de Texto ou IDE, com seus prós e contras, link para d
 - **YouTube**: https://youtu.be/pMT6qygEggI?si=uzxUNPFIovHN5imX
 
 ---
-## Dicas
-Visando o compartilhamento de dicas e outros conteúdos com vocês, também criei esta página no Notion. Não deixem de acompanhar!
-https://tkusal.notion.site/Dicas-de-Estudos-23472b5d03914d68858d61cf8870ac58?pvs=4
-
-Aprenda a usar o GitHub:
-https://youtu.be/pyM5QLS2h6M?si=KsLYehtK8j0Bvba_
-
----
 ### Monitor
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/tkusal/)
