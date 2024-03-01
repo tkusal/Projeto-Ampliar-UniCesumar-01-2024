@@ -30,7 +30,7 @@ int main() {
     switch(cod) {
         case 1 :
             printf("O aumento foi de: %.2f\n", salario * 0.10);
-            printf("Seu salário atual é: %.2f", salario+(salario*0,10));
+            printf("Seu salário atual é: %.2f", salario+(salario*0.10));
             break;
         
         case 2 :
