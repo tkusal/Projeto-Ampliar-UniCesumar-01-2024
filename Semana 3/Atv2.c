@@ -1,11 +1,14 @@
 /*
-    Crie um programa que gere uma senha aleatória para o usuário. O usuário deve escolher se:
+    Desenvolva um programa que verifica se uma senha fornecida pelo usuário atende 
+    aos critérios de segurança:
     
-    - a senha deverá ter letras maiúsculas e minúsculas ou não
-    - se deverá conter números ou não
-    - se deverá contar simbolos ou não
-    - quantidade de caracteres.
+    - Comprimento mínimo de 8 caracteres
+    - Presença de caracteres especiais
+    - Se possuí letras maiúsculas e minúsculas
+    - Se tem número
 
-    Dica: pesquise as bibliotecas time.h e stdlib.h
+    Informe se é válida ou inválida.
 
+    Dica: pesquise pelas bibliotecas string.h e ctype.h
 */
+

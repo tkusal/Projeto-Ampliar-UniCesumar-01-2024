@@ -1,13 +1,57 @@
 /*
-    Desenvolva um programa que verifica se uma senha fornecida pelo usuário atende 
-    aos critérios de segurança:
-    
-    - Comprimento mínimo de 8 caracteres
-    - Presença de caracteres especiais
-    - Se possuí letras maiúsculas e minúsculas
-    - Se tem número
-
-    Informe se é válida ou inválida.
-
-    Dica: pesquise pelas bibliotecas string.h e ctype.h
+    Escreva um programa que receba 6 idades e informe quem é o mais novo e o mais velho.
+    Necessário, ainda, informar se essas duas idades (menor e maior) são maior ou menor que 18 anos.
 */
+
+#include <stdio.h>
+#include <locale.h>
+
+int main () {
+
+    setlocale (LC_ALL, "Portuguese");
+
+    int i, idade, menorIdade, maiorIdade;
+
+    for (i = 1; i <= 6; i++) {
+
+         do {
+            printf("Informe a idade %d: ", i);
+            scanf("%d", &idade);
+
+            if (idade < 0) {
+                printf("Idade não pode ser menor que zero.\n");
+            }
+
+        }while (idade < 0);         
+
+        if (i == 1) {
+            maiorIdade = idade;
+            menorIdade = idade;
+        }
+
+        if (idade > maiorIdade)
+        {
+            maiorIdade = idade;
+        }
+        else
+        {        
+            if (idade < menorIdade){
+                menorIdade = idade;
+            }
+        }
+    }
+
+    if (maiorIdade >= 18) {
+        printf("A pessoa mais velha tem %d anos.\nÉ maior de idade.\n", maiorIdade);
+    } else {
+        printf ("A pessoa mais velha tem %d anos.\nÉ menor de idade.\n", maiorIdade);
+    }
+
+    if (menorIdade >= 18) {
+        printf("A pessoa mais nova tem %d anos.\nÉ maior de idade.", menorIdade);
+    } else {
+        printf ("A pessoa mais nova tem %d anos.\nÉ menor de idade.", menorIdade);
+    }
+
+    return 0;
+}
