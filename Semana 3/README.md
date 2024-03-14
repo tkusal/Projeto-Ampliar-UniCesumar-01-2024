@@ -9,4 +9,4 @@ Semana 2
 
 ### Aula 4
 Vídeo: Em breve
-Exercícios: Em breve
+Exercícios: https://forms.gle/u2Mm4WocpSi76qmq9
