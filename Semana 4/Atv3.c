@@ -19,3 +19,44 @@
 
     5. Encerrar o sistema
 */
+
+#include <stdio.h>
+#include <locale.h>
+typedef struct
+{
+    int qtd, cod;
+    float preco;
+    char descrição[20], marca[20];
+}produto;
+
+int main () {
+
+    setlocale (LC_ALL, "Portuguese");
+
+    int opc;
+    produto produtos[3][5];
+
+    do {
+        printf("1. Cadastrar produto\n2. Alterar Preço de um Produto\n3. Venda\n4. Saldo Total de vendas\n5. Encerrar\n");
+        scanf("%d", &opc);
+        while (getchar() != '\n' && getchar() != EOF);
+
+        switch (opc) {
+            case 1:
+              for (int i = 0; i < 3; i++) {
+                for(int j = 0; j < 5; j++) {
+                    printf("Informe o código do produto: ");
+                    scanf("%d", &produtos[i][j].cod);
+                    while (getchar() != '\n' && getchar() != EOF);
+
+                    printf("Informe a marca: ");
+                    fgets(produtos[i][j].marca, sizeof(produtos[i][j].marca), stdin);
+                    produtos[i][j].marca[strcspn(produtos[i][j].marca, "\n")] = '\0';
+                    while (getchar() != '\n' && getchar() != EOF); 
+              }  
+        }
+
+    } while (opc != 5);
+
+    return 0;
+}
