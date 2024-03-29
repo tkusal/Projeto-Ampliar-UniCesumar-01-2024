@@ -22,41 +22,120 @@
 
 #include <stdio.h>
 #include <locale.h>
+#include <string.h>
+#include <stdlib.h>
 typedef struct
 {
     int qtd, cod;
     float preco;
-    char descrição[20], marca[20];
+    char descricao[20], marca[20];
 }produto;
 
 int main () {
 
     setlocale (LC_ALL, "Portuguese");
 
-    int opc;
-    produto produtos[3][5];
+    int opc, cod, x = 0;
+    float vendaTotal = 0.0;
+    produto produtos[2][2];
 
     do {
         printf("1. Cadastrar produto\n2. Alterar Preço de um Produto\n3. Venda\n4. Saldo Total de vendas\n5. Encerrar\n");
         scanf("%d", &opc);
         while (getchar() != '\n' && getchar() != EOF);
+        system("cls");
 
         switch (opc) {
             case 1:
-              for (int i = 0; i < 3; i++) {
-                for(int j = 0; j < 5; j++) {
-                    printf("Informe o código do produto: ");
-                    scanf("%d", &produtos[i][j].cod);
-                    while (getchar() != '\n' && getchar() != EOF);
+                for (int i = 0; i < 2; i++) {
+                    for(int j = 0; j < 2; j++) {
+                        printf("Informe o código do produto: ");
+                        scanf("%d", &produtos[i][j].cod);
+                        while (getchar() != '\n' && getchar() != EOF);
 
-                    printf("Informe a marca: ");
-                    fgets(produtos[i][j].marca, sizeof(produtos[i][j].marca), stdin);
-                    produtos[i][j].marca[strcspn(produtos[i][j].marca, "\n")] = '\0';
-                    while (getchar() != '\n' && getchar() != EOF); 
-              }  
+                        printf("Informe a marca: ");
+                        fgets(produtos[i][j].marca, sizeof(produtos[i][j].marca), stdin);
+                        produtos[i][j].marca[strcspn(produtos[i][j].marca, "\n")] = '\0';
+                        while (getchar() != '\n' && getchar() != EOF);
+
+                        printf("Informe a descrição do produto: ");
+                        fgets(produtos[i][j].descricao, sizeof(produtos[i][j].descricao), stdin);
+                        produtos[i][j].descricao[strcspn(produtos[i][j].descricao, "\n")] = '\0';
+                        while (getchar() != '\n' && getchar() != EOF);
+
+                        printf("Informe o preço do produto: ");
+                        scanf("%f", &produtos[i][j].preco);
+                        while (getchar() != '\n' && getchar() != EOF);
+
+                        printf("Informe a quantidade: ");
+                        scanf("%d", &produtos[i][j].qtd);
+                        while (getchar() != '\n' && getchar() != EOF);
+
+                        system("cls");
+                    }  
+                }
+                break;
+            case 2:            
+                printf("Digite o código do produto: ");
+                scanf("%d", &cod);
+                system("cls");
+
+                for(int i = 0; i < 2; i++){
+                    for(int j = 0; j < 2; j++) {
+                        if (cod == produtos[i][j].cod) {
+                            printf("Informe o novo valor: ");
+                            scanf("%f", &produtos[i][j].preco);
+                            x = 1;
+                            system("cls");                        
+                        }
+                    }
+                }
+
+                if (x != 1) {
+                    printf("Produto não encontrado.\n");                    
+                }
+                x = 0;
+
+                break;
+            case 3:
+                printf("Digite o código do produto: ");
+                scanf("%d", &cod);
+                system("cls");
+
+                for(int i = 0; i < 2; i++){
+                    for(int j = 0; j < 2; j++) {
+                        if (cod == produtos[i][j].cod) {
+                            if (produtos[i][j].qtd > 0) {
+                                produtos[i][j].qtd--;
+                                vendaTotal += produtos[i][j].preco;
+                                printf("Venda efetuada.\n");
+                            } else {
+                                printf("Não há produto em estoque para ser vendido\n");
+                            }
+                            x = 1;
+                        }
+                    }
+                }
+
+                if (x != 1) {
+                    printf("Produto não encontrado.\n");                    
+                }
+                x = 0;
+
+                break;
+
+            case 4:
+                printf("Venda total: %f\n", vendaTotal);
+                break;
+
+            case 5:
+                printf("Encerrando sistema...");
+                return 0;
+                break;
+
+            default:
+                printf("Opção inválida.\n");
+                break;
         }
-
-    } while (opc != 5);
-
-    return 0;
+    } while (1);
 }
