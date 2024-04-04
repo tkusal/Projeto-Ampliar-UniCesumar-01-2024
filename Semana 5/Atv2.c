@@ -19,7 +19,7 @@ typedef struct
 
 int menu () {
     int opc;
-    printf("Escolha uma opção: \n1. Cadastrar filme\n2. Pesquisar filme\n3. Encerrar");
+    printf("Escolha uma opção: \n1. Cadastrar filme\n2. Pesquisar filme\n3. Encerrar\n");
     scanf("%d", &opc);
     while (getchar() != '\n' && getchar() != EOF);
     system("cls");
@@ -61,7 +61,7 @@ int buscaFilme () {
 int engineBusca(int codBusca, criaFilme filme) {
     int v;
     if(codBusca == filme.codigo) {
-        printf("Nome do filme: %s\nAno: %d\nCód.: %d", filme.titulo, filme.ano, filme.codigo);
+        printf("Nome do filme: %s\nAno: %d\nCód.: %d\n", filme.titulo, filme.ano, filme.codigo);
         v = 1;
         system("pause");
         system("cls");
@@ -87,7 +87,7 @@ int main () {
                     filmes[indice] = cadastrarFilme();
                     indice++;
                 } else {
-                    printf("Excedeu a quantidade de cadastros.");
+                    printf("Excedeu a quantidade de cadastros.\n");
                     system("pause");
                     system("cls");
                 }
@@ -100,7 +100,7 @@ int main () {
                 }
 
                 if (valid != 1)  {
-                    printf("Código não encontrado.");
+                    printf("Código não encontrado.\n");
                     system("pause");
                     system("cls");
                 }
@@ -110,7 +110,7 @@ int main () {
                 system("cls");
                 return 0;
             default:
-                printf("Opção inválida");
+                printf("Opção inválida.\n");
                 system("pause");
                 system("cls");
         }
