@@ -1,12 +1,12 @@
-Semana 5
+Semana 6
 ============
 
-* Subrotinas
+* Ponteiros
 
 
 ---
 ## Mini aulas gravadas:
 
-### Aula 6
+### Aula 7
 Vídeo: 
 Exercícios: 

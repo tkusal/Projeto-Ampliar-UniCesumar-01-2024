@@ -1,12 +1,12 @@
 /*
-    Escreva um cÛdigo que cadastre atÈ 100 veiculos e permita:
+    Escreva um c√≥digo que cadastre at√© 100 veiculos e permita:
 
-    - O usu·rio informar pela placa do veÌculo que este est· alugado;
-    - Informar que um veÌculo foi devolvido
-    - O usu·rio informar pela placa do veÌculo que este est· em oficina;
-    - Informar que um veÌculo retornou da oficina;
+    - O usu√°rio informar pela placa do ve√≠culo que este est√° alugado;
+    - Informar que um ve√≠culo foi devolvido
+    - O usu√°rio informar pela placa do ve√≠culo que este est√° em oficina;
+    - Informar que um ve√≠culo retornou da oficina;
 
-    - O veÌculo possui: Marca, modelo, cor, ano e placa;
+    - O ve√≠culo possui: Marca, modelo, cor, ano e placa;
 */
 
 #include <stdio.h>
@@ -30,10 +30,10 @@ int main () {
     int opc, indice = 0, indiceBusca;
 
     do {
-        printf("Escolha uma opÁ„o:\n1. Cadastrar veÌculo\n2. Alugar VeÌculo\n");
-        printf("3. Devolver veÌculo\n4. Oficina\n5. Retornar da oficina\n6. Sair\n");
+        printf("Escolha uma op√ß√£o:\n1. Cadastrar ve√≠culo\n2. Alugar Ve√≠culo\n");
+        printf("3. Devolver ve√≠culo\n4. Oficina\n5. Retornar da oficina\n6. Sair\n");
         scanf("%d", &opc);
-        while (getchar() != '\n' && getchar() != EOF);;
+        while (getchar() != '\n' && getchar() != EOF);
         system("cls");
 
         switch(opc) {
@@ -90,7 +90,7 @@ int main () {
                 return 0;
                 break;
             default:
-                printf("OpÁ„o inv·lida\n");
+                printf("Op√ß√£o inv√°lida\n");
                 system("pause");
                 system("cls");
                 break;                    
@@ -103,30 +103,30 @@ void cadastrarVeiculo (int index) {
     printf("Infome a marca: ");
     fgets(carros[index].marca, sizeof(carros[index].marca), stdin);
     carros[index].marca[strcspn(carros[index].marca, "\n")] = '\0';
-    while (getchar() != '\n' && getchar() != EOF);;
+    while (getchar() != '\n' && getchar() != EOF);
     system("cls");
 
     printf("Infome o modelo: ");
     fgets(carros[index].modelo, sizeof(carros[index].modelo), stdin);
     carros[index].modelo[strcspn(carros[index].modelo, "\n")] = '\0';
-    while (getchar() != '\n' && getchar() != EOF);;
+    while (getchar() != '\n' && getchar() != EOF);
     system("cls");
 
     printf("Infome a cor: ");
     fgets(carros[index].cor, sizeof(carros[index].cor), stdin);
     carros[index].cor[strcspn(carros[index].cor, "\n")] = '\0';
-    while (getchar() != '\n' && getchar() != EOF);;
+    while (getchar() != '\n' && getchar() != EOF);
     system("cls");
 
     printf("Infome a placa: ");
     fgets(carros[index].placa, sizeof(carros[index].placa), stdin);
     carros[index].placa[strcspn(carros[index].placa, "\n")] = '\0';
-    while (getchar() != '\n' && getchar() != EOF);;
+    while (getchar() != '\n' && getchar() != EOF);
     system("cls");
 
     printf("Infome o ano: ");
     scanf("%d", &carros[index].ano);
-    while (getchar() != '\n' && getchar() != EOF);;
+    while (getchar() != '\n' && getchar() != EOF);
     system("cls");
 
     carros[index].status = 0;
@@ -139,7 +139,7 @@ int buscaPlaca (int ind) {
     printf("Informe a praca que deseja buscar: ");
     fgets(placa, sizeof(placa), stdin);
     placa[strcspn(placa, "\n")] = '\0';
-    while (getchar() != '\n' && getchar() != EOF);;
+    while (getchar() != '\n' && getchar() != EOF);
     system("cls");
 
     for (int i = 0; i <= ind; i++) {
@@ -149,7 +149,7 @@ int buscaPlaca (int ind) {
         }
     }
     if (valid != 1) {
-        printf("Placa n„o encontrada.\n");
+        printf("Placa n√£o encontrada.\n");
         return -1;
     }
 
