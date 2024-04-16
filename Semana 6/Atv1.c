@@ -6,7 +6,7 @@
     - Cadastrar uma venda de um produto pra um cliente (pelo código do cliente e código do produto).
         - A venda deve reduzir o saldo do cliente de acordo com preço e qtd do produto vendido)
     - Listar todas as vendas
-    - Listar todas os clientes
+    - Listar todos os clientes
 
     - Use subrotinas e ponteiros onde julgar necessário
 */
@@ -15,6 +15,10 @@
 #include <string.h>   
 #include <locale.h>
 #include <stdlib.h>
+
+#define MAX_CLIENTES 100
+#define MAX_PRODUTOS 100
+#define MAX_VENDAS 1000
 
 typedef struct {
     char nome[120];
@@ -31,7 +35,7 @@ typedef struct {
 } cadProduto;
 
 typedef struct {
-    int codClient, codProduto, qtdProduto;
+    int codCliente, codProduto, qtdProduto;
     float valorVenda;
 } cadVenda;
 
@@ -40,14 +44,16 @@ void cadastroCliente();
 void cadastroProduto();
 void cadastroVenda();
 void cadastroVenda();
+void listarVendas();
+void listarClientes();
 
 
 int main () {
     setlocale(LC_ALL, "Portuguese");  //ASCII
     
-    cadCliente cliente[100];
-    cadProduto produto[100];
-    cadVenda vendas[1000];
+    cadCliente cliente[MAX_CLIENTES];
+    cadProduto produto[MAX_PRODUTOS];
+    cadVenda vendas[MAX_VENDAS];
 
     int qtdCliente = 0, qtdProduto = 0, qtdVendas = 0;
     int opc;
@@ -57,38 +63,41 @@ int main () {
         system("cls");
         switch (opc) {
             case 1:
-                if (qtdCliente < 100) {
+                if (qtdCliente < MAX_CLIENTES) {
                     cadastroCliente(&cliente[qtdCliente]);
                     qtdCliente++;
                 } else {
-                    printf("Limite de cadastros excedido!");
+                    printf("Limite de cadastros excedido!\n");
                 }
                 break;
             case 2:
-                if(qtdProduto < 100) {
+                if(qtdProduto < MAX_PRODUTOS) {
                     cadastroProduto(&produto[qtdProduto]);
                     qtdProduto++;
                 } else {
-                    printf("Limite de cadastros excedido!");
+                    printf("Limite de cadastros excedido!\n");
                 }
                 break;
             case 3:
-                if(qtdVendas < 1000){
-                    cadastroVenda(&vendas[qtdVendas], produto, cliente);
-                    qtdVendas++;
+                if(qtdVendas < MAX_VENDAS){
+                    cadastroVenda(&vendas[qtdVendas], produto, cliente, &qtdVendas);
+                } else {
+                    printf("Limite de cadastros excedido!\n");
                 }
                 break;
             case 4:
-                listarVendas();
+                listarVendas(vendas, qtdVendas);
                 break;
             case 5:
-                listarClientes();
+                listarClientes(cliente, qtdCliente);
                 break;
             case 6:
-                printf("Encerrando...");
+                printf("\nEncerrando...\n");
+                system("pause");
                 return 0;
             default:
-                print("Opção inválida!");
+                printf("\nOpção inválida!\n"); // Bug: quando a opção é uma letra
+                system("pause");
                 break;
         }
     } while(1);
@@ -106,81 +115,100 @@ int main () {
 
 
 
-cadProduto validaProduto(int cod,cadProduto *produtos) {
-    int j = 0;
-    for(int i = produtos; i < produtos+100; i++) {
-        if ((produtos+j)->codigo == cod) {
-            return (produtos+j);
+int validaProduto(int cod,cadProduto *produtos) {
+    for (int i = 0; i < MAX_PRODUTOS; i++) {
+        if (produtos[i].codigo == cod) {
+            return i;
         }
-        j++;             
     }
-    return ; 
+    return -1;
 }
 
-cadCliente validaCliente(int cod, cadCliente *clientes) {
-    int j = 0;
-    for(int i = clientes; i < clientes+100; i++) {
-        if ((clientes+j)->cod == cod) {
-            return (clientes+j);
-            printf("Encontrado: %d", clientes->cod);
+int validaCliente(int cod, cadCliente *clientes) {
+    for (int i = 0; i < MAX_CLIENTES; i++) {
+        if (clientes[i].cod == cod) {
+            return i;
         }
-        j++;
     }
-    return;
+    return -1;
 }
 
-void cadastroVenda(cadVenda *venda, cadProduto *produtos, cadCliente *clientes) {
-    int codCliente, codProduto, qntd;
-    cadCliente *cliente;
-    cadProduto *produto;
+
+void cadastroVenda(cadVenda *venda, cadProduto *produtos, cadCliente *clientes, int *qtdVendas) {
+    int codCliente, codProduto, qntd, clienteIdx, produtoIdx;
 
     printf("Informe o código do cliente: \n");
     scanf("%d", &codCliente);
-    cliente = validaCliente(codCliente, clientes);
-
-    printf("Validado: %d", cliente->cod);
-
+    clienteIdx = validaCliente(codCliente, clientes);
     
-    /*
-    if (cliente != -1) {
+    if (clienteIdx != -1) {
         printf("Informe o código do produto: \n");
         scanf("%d", &codProduto);
-        produto = validaProduto(codProduto, produtos);
+        produtoIdx = validaProduto(codProduto, produtos);
         
-        if (produto != -1) {
+        if (produtoIdx != -1) {
             printf("Informe a quantidade desejada: \n");
             scanf("%d", &qntd);
-            if (produto->qtd >= qntd) {
-                int totalVenda = qntd * produto->valor;
-                if (cliente->saldo >= totalVenda) {
-                    cliente->saldo -= totalVenda;
-                    produto->qtd -= qntd
+
+            if (produtos[produtoIdx].qtd >= qntd) {
+                int totalVenda = qntd * produtos[produtoIdx].valor;
+                if (clientes[clienteIdx].saldo >= totalVenda) {
+                    clientes[clienteIdx].saldo -= totalVenda;
+                    produtos[produtoIdx].qtd -= qntd;
+
+                    venda->codCliente = codCliente;
+                    venda->codProduto = codProduto;
+                    venda->qtdProduto = qntd;
+                    venda->valorVenda = totalVenda;
+                    (*qtdVendas)++; // Aumentar qtd de vendas somente após validação
+                    printf("Venda cadastrada!\n");
+                } else {
+                    printf("Cliente não tem saldo suficiente!\n");
                 }
             } else {
-                printf("Não há essa quantidade de produtos em estoque!");
-            }
-            for(int i = 0; i < 100; i++) {
-
+                printf("Não há essa quantidade de produtos em estoque!\n");
             }
         } else {
-            printf("Código de produto não existe!");
+            printf("Código de produto não existe!\n");
         }
-
     } else {
-        printf("Código de cliente não existe!");
-    }  
-    */
-   
+        printf("Código de cliente não existe!\n");
+    }
+    system("pause");
 }
 
-void cadastroCliente (cadCliente *ptr) { 
-    
-    printf("Informe o código: \n");      
-    scanf("%d", &ptr->cod);
+void listarVendas(cadVenda *vendas, int qtdVenda) {
+    system("cls");
+    for (int i = 0; i < qtdVenda; i++) {
+        printf("Venda #%d de código: %d. No valor de %.2f, com %d quantidade(s), para cliente de código %d\n", i, vendas->codProduto, vendas->valorVenda, vendas->qtdProduto, vendas->codCliente);
+    }
+    if (qtdVenda == 0) {
+        printf("Não há vendas cadastradas!\n");
+    }
+    system("pause");
+}
 
-    printf("Informe o nome: \n"); 
+void listarClientes(cadCliente *clientes, int qtdCliente) {
+    system("cls");
+    for (int i = 0; i < qtdCliente; i++) {
+        printf("Cliente #%d de código %d. Nome: %s, Idade: %d, Saldo: %.2f\n", i, clientes[i].cod, clientes[i].nome, clientes[i].idade, clientes[i].saldo);
+    }
+    if (qtdCliente == 0) {
+        printf("Não há clientes cadastrados!\n");
+    }
+    system("pause");
+}
+
+void cadastroCliente (cadCliente *ptr) {
+    
+    printf("\nInforme o código: \n");
+    scanf("%d", &ptr->cod);
+    while (getchar() != '\n' && getchar() != EOF); // Flush stdin
+
+    printf("Informe o nome: \n");
     fgets(ptr->nome, sizeof(ptr->nome), stdin);
     ptr->nome[strcspn(ptr->nome, "\n")] = '\0';
+    while (getchar() != '\n' && getchar() != EOF);
 
     printf("Informe a idade: \n");
     scanf("%d", &ptr->idade);
@@ -188,7 +216,6 @@ void cadastroCliente (cadCliente *ptr) {
     printf("Informe o Saldo: \n");
     scanf("%f", &ptr->saldo);
 
-    while (getchar() != '\n' && getchar() != EOF);
     system("cls");
 }
 
@@ -196,16 +223,16 @@ void cadastroProduto(cadProduto *ptl ){
    
     printf("Informe o codigo: \n");
     scanf("%d", &ptl->codigo);
-    
+    while (getchar() != '\n' && getchar() != EOF);
+
     printf("Descrição do produto: \n");
     fgets(ptl->desc, sizeof(ptl->desc), stdin);
     ptl->desc[strcspn(ptl->desc, "\n")] = '\0';
+    while (getchar() != '\n' && getchar() != EOF);
 
     printf("Valor do produto: \n");
     scanf("%f", &ptl->valor);    
 
-    while (getchar() != '\n' && getchar() != EOF);
-    system("cls");
     printf("Quantidade de produtos: \n");
     scanf("%d", &ptl->qtd);
 }
@@ -213,9 +240,10 @@ void cadastroProduto(cadProduto *ptl ){
 int menu(){
     int opc;
 
+    system("cls");
     printf("Escolha uma opção:\n");
     printf("1. Cadastrar cliente \n2. Cadastrar produto \n3. Cadastrar uma venda\n");
-    printf("4. Listar venda \n5. Listar todos clientes \n");
+    printf("4. Listar venda \n5. Listar todos clientes \n6. Sair\n");
     scanf("%d", &opc);
     
     return opc;
