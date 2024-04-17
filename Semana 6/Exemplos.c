@@ -26,13 +26,13 @@ int main (void) {
 
     printf("\nExemplo 2:\n");
     ponteiro = vetor;
-    printf("Endere�o indice 0: %d\n", *ponteiro);
+    printf("Endereï¿½o indice 0: %d\n", *ponteiro);
     ponteiro++;
-    printf("Endere�o indice 1: %d\n", *ponteiro);
+    printf("Endereï¿½o indice 1: %d\n", *ponteiro);
     ponteiro++;
-    printf("Endere�o indice 2: %d\n", *ponteiro);
+    printf("Endereï¿½o indice 2: %d\n", *ponteiro);
     //ponteiro++;
-    //printf("Endere�o 4bytes depois: %d\n", *ponteiro);
+    //printf("Endereï¿½o 4bytes depois: %d\n", *ponteiro);
 
     // Exemplo 3
     int x, *p;
@@ -40,11 +40,11 @@ int main (void) {
     p = &x;
 
     printf("\nExemplo 3:\n");
-    printf("Valor armazenado em p: %p\n", p); // Valor armazenado em P: Endere�o de mem�ria hexadecimal A
-    printf("Endere�o de p: %p\n", &p); // Endere�o de p > Endere�o de mem�ria hexadecimal B (endere�o do ponteiro em si)
-    printf("Endere�o de x: %p\n", &x); // Endere�o de x > Endere�o de mem�ria hexadecimal A
+    printf("Valor armazenado em p: %p\n", p); // Valor armazenado em P: Endereï¿½o de memï¿½ria hexadecimal A
+    printf("Endereï¿½o de p: %p\n", &p); // Endereï¿½o de p > Endereï¿½o de memï¿½ria hexadecimal B (endereï¿½o do ponteiro em si)
+    printf("Endereï¿½o de x: %p\n", &x); // Endereï¿½o de x > Endereï¿½o de memï¿½ria hexadecimal A
     printf("Valor armazenado em X: %d\n", x); // Valor armazenado em X: 10
-    printf("Valor armazenado no endere�o de mem�ria que est� em p: %d\n", *p); // Valor armazenado no endere�o de mem�ria que est� em p > X: 10
+    printf("Valor armazenado no endereï¿½o de memï¿½ria que estï¿½ em p: %d\n", *p); // Valor armazenado no endereï¿½o de memï¿½ria que estï¿½ em p > X: 10
 
     // Exemplo 4
     printf("\nExemplo 4:\n");

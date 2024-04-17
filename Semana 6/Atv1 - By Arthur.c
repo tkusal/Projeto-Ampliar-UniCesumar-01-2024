@@ -1,14 +1,26 @@
 /*
-    Escreva um código que cadastre até 100 clientes e até 100 produtos. No sistema o usuário deve poder:
+    Escreva um cï¿½digo que cadastre atï¿½ 100 clientes e atï¿½ 100 produtos. No sistema o usuï¿½rio deve poder:
 
-    - Cadastrar o cliente (Código, Nome, idade, saldo)
-    - Cadastrar produto (código do produto, descrição do produto, valor do produto, qtd)
-    - Cadastrar uma venda de um produto pra um cliente (pelo código do cliente e código do produto).
-        - A venda deve reduzir o saldo do cliente de acordo com preço e qtd do produto vendido)
+    - Cadastrar o cliente (Cï¿½digo, Nome, idade, saldo)
+    - Cadastrar produto (cï¿½digo do produto, descriï¿½ï¿½o do produto, valor do produto, qtd)
+    - Cadastrar uma venda de um produto pra um cliente (pelo cï¿½digo do cliente e cï¿½digo do produto).
+        - A venda deve reduzir o saldo do cliente de acordo com preï¿½o e qtd do produto vendido)
     - Listar todas as vendas
     - Listar todos os clientes
 
-    - Use subrotinas e ponteiros onde julgar necessário
+    - Use subrotinas e ponteiros onde julgar necessï¿½rio
+
+    Cadastro de venda:
+    - Recebe o cÃ³digo do cliente e valida se o cliente existe
+    - Recebe o cÃ³digo do produto e valida se o produto existe
+    - Recebe a quantidade de produto da venda e valida se existe em estoque
+    - Calcula o total da Venda
+    - Valida se o cliente tem saldo pra finalizar a compra
+    - Abate o valor da venda no saldo do cliente e a quantidade vendida no estoque do produto
+
+
+    ExercÃ­cio desenvolvido utilizando o Live Share do VSCode.
+    CÃ³digo escrito, em grande parte, pelos alunos.
 */
 
 #include <stdio.h>
@@ -40,12 +52,12 @@ typedef struct {
 } cadVenda;
 
 int menu();
-void cadastroCliente();
-void cadastroProduto();
-void cadastroVenda();
-void cadastroVenda();
-void listarVendas();
-void listarClientes();
+void cadastroCliente(cadCliente *ptr);
+void cadastroProduto(cadProduto *ptl);
+void cadastroVenda(cadVenda *venda, cadProduto *produtos, cadCliente *clientes, int *qtdVendas);
+void cadastroVenda(cadVenda *venda, cadProduto *produtos, cadCliente *clientes, int *qtdVendas);
+void listarVendas(cadVenda *vendas, int qtdVenda);
+void listarClientes(cadCliente *clientes, int qtdCliente);
 
 
 int main () {
@@ -96,22 +108,12 @@ int main () {
                 system("pause");
                 return 0;
             default:
-                printf("\nOpção inválida!\n"); // Bug: quando a opção é uma letra
+                printf("\nOpï¿½ï¿½o invï¿½lida!\n"); // Bug: quando a opï¿½ï¿½o ï¿½ uma letra
                 system("pause");
                 break;
         }
     } while(1);
 }
-
-/*
-    Cadastro de venda:
-    - Recebe o código do cliente e valida se o cliente existe
-    - Recebe o código do produto e valida se o produto existe
-    - Recebe a quantidade de produto da venda e valida se existe em estoque
-    - Calcula o total da Venda
-    - Valida se o cliente tem saldo pra finalizar a compra
-    - Abate o valor da venda no saldo do cliente e a quantidade vendida no estoque do produto
-*/
 
 int validaProduto(int cod,cadProduto *produtos) {
     for (int i = 0; i < MAX_PRODUTOS; i++) {
@@ -135,13 +137,13 @@ int validaCliente(int cod, cadCliente *clientes) {
 void cadastroVenda(cadVenda *venda, cadProduto *produtos, cadCliente *clientes, int *qtdVendas) {
     int codCliente, codProduto, qntd, clienteIdx, produtoIdx;
 
-    printf("Informe o código do cliente: \n");
+    printf("Informe o cï¿½digo do cliente: \n");
     scanf("%d", &codCliente);
     while (getchar() != '\n' && getchar() != EOF);
     clienteIdx = validaCliente(codCliente, clientes);
     
     if (clienteIdx != -1) {
-        printf("Informe o código do produto: \n");
+        printf("Informe o cï¿½digo do produto: \n");
         scanf("%d", &codProduto);
         while (getchar() != '\n' && getchar() != EOF);
         produtoIdx = validaProduto(codProduto, produtos);
@@ -161,48 +163,50 @@ void cadastroVenda(cadVenda *venda, cadProduto *produtos, cadCliente *clientes, 
                     venda->codProduto = codProduto;
                     venda->qtdProduto = qntd;
                     venda->valorVenda = totalVenda;
-                    (*qtdVendas)++; // Aumentar qtd de vendas somente após validação
+                    (*qtdVendas)++; // Aumentar qtd de vendas somente apï¿½s validaï¿½ï¿½o
                     printf("Venda cadastrada!\n");
                 } else {
-                    printf("Cliente não tem saldo suficiente!\n");
+                    printf("Cliente nï¿½o tem saldo suficiente!\n");
                 }
             } else {
-                printf("Não há essa quantidade de produtos em estoque!\n");
+                printf("Nï¿½o hï¿½ essa quantidade de produtos em estoque!\n");
             }
         } else {
-            printf("Código de produto não existe!\n");
+            printf("Cï¿½digo de produto nï¿½o existe!\n");
         }
     } else {
-        printf("Código de cliente não existe!\n");
+        printf("Cï¿½digo de cliente nï¿½o existe!\n");
     }
     system("pause");
 }
 
 void listarVendas(cadVenda *vendas, int qtdVenda) {
     system("cls");
-    for (int i = 0; i < qtdVenda; i++) {
-        printf("Venda #%d de código: %d. No valor de %.2f, com %d quantidade(s), para cliente de código %d\n", i, vendas->codProduto, vendas->valorVenda, vendas->qtdProduto, vendas->codCliente);
-    }
     if (qtdVenda == 0) {
-        printf("Não há vendas cadastradas!\n");
+        printf("Nï¿½o hï¿½ vendas cadastradas!\n");
+        return;
+    }
+    for (int i = 0; i < qtdVenda; i++) {
+        printf("Venda #%d de cÃ³digo: %d. No valor de %.2f, com %d quantidade(s), para cliente de cÃ³digo %d\n", i+1, vendas->codProduto, vendas->valorVenda, vendas->qtdProduto, vendas->codCliente);
     }
     system("pause");
 }
 
 void listarClientes(cadCliente *clientes, int qtdCliente) {
     system("cls");
-    for (int i = 0; i < qtdCliente; i++) {
-        printf("Cliente #%d de código %d. Nome: %s, Idade: %d, Saldo: %.2f\n", i, clientes[i].cod, clientes[i].nome, clientes[i].idade, clientes[i].saldo);
-    }
     if (qtdCliente == 0) {
-        printf("Não há clientes cadastrados!\n");
+        printf("Nï¿½o hï¿½ clientes cadastrados!\n");
+        return;
+    }
+    for (int i = 0; i < qtdCliente; i++) {
+        printf("Cliente #%d de cÃ³digo %d. Nome: %s, Idade: %d, Saldo: %.2f\n", i+1, clientes[i].cod, clientes[i].nome, clientes[i].idade, clientes[i].saldo);
     }
     system("pause");
 }
 
 void cadastroCliente (cadCliente *ptr) {
     
-    printf("\nInforme o código: \n");
+    printf("\nInforme o cï¿½digo: \n");
     scanf("%d", &ptr->cod);
     while (getchar() != '\n' && getchar() != EOF); // Flush stdin
 
@@ -226,7 +230,7 @@ void cadastroProduto(cadProduto *ptl ){
     scanf("%d", &ptl->codigo);
     while (getchar() != '\n' && getchar() != EOF);
 
-    printf("Descrição do produto: \n");
+    printf("Descriï¿½ï¿½o do produto: \n");
     fgets(ptl->desc, sizeof(ptl->desc), stdin);
     ptl->desc[strcspn(ptl->desc, "\n")] = '\0';
     while (getchar() != '\n' && getchar() != EOF);
@@ -244,7 +248,7 @@ int menu(){
     int opc;
 
     system("cls");
-    printf("Escolha uma opção:\n");
+    printf("Escolha uma opï¿½ï¿½o:\n");
     printf("1. Cadastrar cliente \n2. Cadastrar produto \n3. Cadastrar uma venda\n");
     printf("4. Listar venda \n5. Listar todos clientes \n6. Sair\n");
     scanf("%d", &opc);

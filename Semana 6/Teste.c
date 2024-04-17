@@ -1,21 +1,10 @@
 #include <stdio.h>
 
-void retorno (int *b) {
-    int a =1;
-    if (a == 1) {
-        return;
-    } else {
-        *b = 1;
-    }
-
-}
-
 int main() {
-    int b = 0;
+    int x = 0;
 
-    retorno(&b);
-
-    printf("%d", b);
+    printf("%d\n", x++);
+    printf("%d\n", ++x);
 
     return 0;
 }

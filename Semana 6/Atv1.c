@@ -50,7 +50,9 @@ typedef struct {
 int menu();
 void cadastroCliente(cadCliente *ptr);
 void cadastroProduto(cadProduto *ptl);
-void cadastroVenda(cadVenda *venda, cadProduto *produtos, cadCliente *clientes);
+void cadastroVenda(cadVenda *venda, cadProduto *produtos, cadCliente *clientes, int *qtdVendas);
+void listarClientes(cadCliente *clientes, int qtdCliente);
+void listarVendas(cadVenda *vendas, int qtdVendas);
 
 int main () {
     setlocale(LC_ALL, "Portuguese");  //ASCII
@@ -83,15 +85,14 @@ int main () {
                 break;
             case 3:
                 if(qtdVendas < 1000){
-                    cadastroVenda(&vendas[qtdVendas], produto, cliente);
-                    qtdVendas++;
+                    cadastroVenda(&vendas[qtdVendas], produto, cliente, &qtdVendas);
                 }
                 break;
             case 4:
-                //listarVendas();
+                listarVendas(vendas, qtdVendas);
                 break;
             case 5:
-                //listarClientes();
+                listarClientes(cliente, qtdCliente);
                 break;
             case 6:
                 printf("Encerrando... ");
@@ -123,7 +124,7 @@ int validarProduto(int codigo, cadProduto *produtos) {
     return -1;
 }
 
-void cadastroVenda(cadVenda *venda, cadProduto *produtos, cadCliente *clientes) {
+void cadastroVenda(cadVenda *venda, cadProduto *produtos, cadCliente *clientes, int *qtdVendas) {
     int codigoCliente, codigoProduto, qtdProduto;
     float totalVenda = 0;
 
@@ -159,7 +160,7 @@ void cadastroVenda(cadVenda *venda, cadProduto *produtos, cadCliente *clientes) 
     system("cls");
 
     if (qtdProduto > produtos[indiceProduto].qtd) {
-        printf("Quantidade de produto insuficiente em estoque!\nDisponível: %d", produtos[indiceProduto]);
+        printf("Quantidade de produto insuficiente em estoque!\nDisponível: %d", produtos[indiceProduto].qtd);
         system("pause");
         system("cls");
         return;
@@ -181,6 +182,7 @@ void cadastroVenda(cadVenda *venda, cadProduto *produtos, cadCliente *clientes) 
     venda->codProduto = codigoProduto;
     venda->qtdProduto = qtdProduto;
     venda->valorVenda = totalVenda;
+    (*qtdVendas)++;
 
     printf("Venda cadastrada com sucesso!\n");
     system("pause");
@@ -194,7 +196,7 @@ void cadastroProduto(cadProduto *ptl){
     getchar();
     system("cls");
     
-    printf("Descriï¿½ï¿½o do produto: \n");
+    printf("Descrição do produto: \n");
     fgets(ptl->desc, sizeof(ptl->desc), stdin);
     ptl->desc[strcspn(ptl->desc, "\n")] = '\0';
     getchar();
@@ -235,12 +237,38 @@ void cadastroCliente (cadCliente *ptr) {
     system("cls");
 }
 
+void listarClientes(cadCliente *clientes, int qtdCliente){
+    if(qtdCliente == 0){
+        printf("Nenhum cliente encontrado!!!\n");
+    } else{
+        for (int i = 0; i < qtdCliente; i++){
+            printf("Cliente %d: Codigo %d, Nome: %s Idade %d, Saldo: %.2f\n", i+1, clientes[i].cod, clientes[i].nome, clientes[i].idade, clientes[i].saldo);
+            printf("_____________________________________________________________________________");            
+        }
+        system("pause");
+        system("cls");
+    }
+}
+
+void listarVendas(cadVenda *vendas, int qtdvendas){
+    if(qtdvendas == 0){
+        printf("Nenhuma venda registrada\n");
+    } else{
+        for (int i = 0; i < qtdvendas; i++){
+            printf("Código do Cliente: %d\nCódigo do produto: %d\nQuantidade:%d\nValor da venda:%.2f\n", vendas[i].codClient ,vendas[i].codProduto, vendas[i].qtdProduto, vendas[i].valorVenda);
+            printf("_____________________________________________________________________________");    
+        }
+        system("pause");
+        system("cls");   
+    }
+}
+
 int menu(){
     int opc;
 
     printf("Escolha uma opçãoo:\n");
     printf("1. Cadastrar cliente \n2. Cadastrar produto \n3. Cadastrar uma venda\n");
-    printf("4. Listar venda \n5. Listar todos clientes \n6. Sair");
+    printf("4. Listar venda \n5. Listar todos clientes \n6. Sair\n");
     scanf("%d", &opc);
     getchar();
     system("cls");
