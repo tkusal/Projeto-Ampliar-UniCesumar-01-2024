@@ -1,0 +1,140 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define MAX_CLIENTES 100
+#define MAX_PRODUTOS 100
+#define MAX_VENDAS 100
+
+typedef struct {
+    int codigo;
+    char nome[50];
+    int idade;
+    float saldo;
+} Cliente;
+
+typedef struct {
+    int codigo;
+    char descricao[50];
+    float valor;
+    int qtd;
+} Produto;
+
+typedef struct {
+    int codigo_cliente;
+    int codigo_produto;
+    int qtd;
+    float valor_total;
+} Venda;
+
+Cliente clientes[MAX_CLIENTES];
+Produto produtos[MAX_PRODUTOS];
+Venda vendas[MAX_VENDAS];
+int num_clientes = 0;
+int num_produtos = 0;
+int num_vendas = 0;
+
+void cadastrarCliente(int codigo, char nome[50], int idade, float saldo) {
+    if (num_clientes < MAX_CLIENTES) {
+        clientes[num_clientes].codigo = codigo;
+        strcpy(clientes[num_clientes].nome, nome);
+        clientes[num_clientes].idade = idade;
+        clientes[num_clientes].saldo = saldo;
+        num_clientes++;
+        printf("Cliente cadastrado com sucesso.\n");
+    } else {
+        printf("Limite de clientes atingido.\n");
+    }
+}
+
+void cadastrarProduto(int codigo, char descricao[50], float valor, int qtd) {
+    if (num_produtos < MAX_PRODUTOS) {
+        produtos[num_produtos].codigo = codigo;
+        strcpy(produtos[num_produtos].descricao, descricao);
+        produtos[num_produtos].valor = valor;
+        produtos[num_produtos].qtd = qtd;
+        num_produtos++;
+        printf("Produto cadastrado com sucesso.\n");
+    } else {
+        printf("Limite de produtos atingido.\n");
+    }
+}
+
+void cadastrarVenda(int codigo_cliente, int codigo_produto, int qtd) {
+    float valor_total = 0;
+    int i;
+
+    // Verifica se o cliente existe
+    for (i = 0; i < num_clientes; i++) {
+        if (clientes[i].codigo == codigo_cliente) {
+            // Verifica se o produto existe
+            for (i = 0; i < num_produtos; i++) {
+                if (produtos[i].codigo == codigo_produto) {
+                    // Verifica se há quantidade suficiente em estoque
+                    if (produtos[i].qtd >= qtd) {
+                        valor_total = produtos[i].valor * qtd;
+                        // Verifica se o cliente tem saldo suficiente
+                        if (clientes[i].saldo >= valor_total) {
+                            // Atualiza o saldo do cliente e a quantidade em estoque do produto
+                            clientes[i].saldo -= valor_total;
+                            produtos[i].qtd -= qtd;
+                            // Registra a venda
+                            vendas[num_vendas].codigo_cliente = codigo_cliente;
+                            vendas[num_vendas].codigo_produto = codigo_produto;
+                            vendas[num_vendas].qtd = qtd;
+                            vendas[num_vendas].valor_total = valor_total;
+                            num_vendas++;
+                            printf("Venda cadastrada com sucesso.\n");
+                        } else {
+                            printf("Saldo insuficiente.\n");
+                        }
+                    } else {
+                        printf("Estoque insuficiente.\n");
+                    }
+                    break;
+                }
+            }
+            break;
+        }
+    }
+    if (i == num_clientes) {
+        printf("Cliente não encontrado.\n");
+    }
+    if (i == num_produtos) {
+        printf("Produto não encontrado.\n");
+    }
+}
+
+void listarVendas() {
+    int i;
+    printf("Lista de vendas:\n");
+    for (i = 0; i < num_vendas; i++) {
+        printf("Código Cliente: %d, Código Produto: %d, Qtd: %d, Valor Total: %.2f\n",
+               vendas[i].codigo_cliente, vendas[i].codigo_produto, vendas[i].qtd, vendas[i].valor_total);
+    }
+}
+
+void listarClientes() {
+    int i;
+    printf("Lista de clientes:\n");
+    for (i = 0; i < num_clientes; i++) {
+        printf("Código: %d, Nome: %s, Idade: %d, Saldo: %.2f\n",
+               clientes[i].codigo, clientes[i].nome, clientes[i].idade, clientes[i].saldo);
+    }
+}
+
+int main() {
+    cadastrarCliente(1, "Joao", 30, 1000);
+    cadastrarCliente(2, "Maria", 25, 1500);
+
+    cadastrarProduto(1, "Arroz", 5.0, 100);
+    cadastrarProduto(2, "Feijao", 7.0, 50);
+
+    cadastrarVenda(1, 1, 10);
+    cadastrarVenda(2, 2, 5);
+
+    listarClientes();
+    listarVendas();
+
+    return 0;
+}
