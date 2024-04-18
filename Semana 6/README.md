@@ -9,4 +9,4 @@ Semana 6
 
 ### Aula 7
 Vídeo: 
-Exercícios: 
+Exercícios: https://forms.gle/u17XFvYNsSXTTbmK9
