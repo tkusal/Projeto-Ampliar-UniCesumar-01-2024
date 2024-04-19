@@ -7,13 +7,14 @@
 
 #include <stdio.h>
 #include <locale.h>
+#include <math.h>
 
 void entradaValores(int opcao, float *valor1, float *valor2);
 
 int main() {
     setlocale(LC_ALL, "portuguese");
 
-    int opc;
+    int opc = 0;
     float resultado, valor1, valor2;
     
     do {
@@ -28,6 +29,7 @@ int main() {
         printf("5. Raiz quadrada\n");
 
         scanf("%d", &opc);
+        while (getchar() != '\n' && getchar() != EOF);
         system("cls");
 
         switch (opc) {
@@ -54,15 +56,24 @@ int main() {
             case 4:
                 printf("Operação: divisão\n");
                 entradaValores(opc, &valor1, &valor2);
+                if (valor2 == 0) {
+                    printf("Não é possível dividir por 0! (Indefinido)");
+                    break;
+                }
                 resultado = valor1 / valor2;
                 break;
             case 5:
                 printf("Operação: raiz quadrada\n");
                 entradaValores(opc, &valor1, &valor2);
-                resultado = valor1 * valor1;
+                if (valor1 < 0) {
+                    printf("Não é possível calcular a raiz quadrada de um número negativo!");
+                    break;
+                }
+                resultado = sqrt(valor1);
                 break;
             default:
                 printf("Opção inválida!\n");
+                break;
         }
 
         printf("\nResultado: %.2f\n", resultado);
@@ -75,10 +86,13 @@ void entradaValores(int opcao, float *valor1, float *valor2) {
     if (opcao != 5) {
         printf("Digite o primeiro valor:\n");
         scanf("%f", valor1);
+        while (getchar() != '\n' && getchar() != EOF);
         printf("Digite o segundo valor:\n");
         scanf("%f", valor2);
+        while (getchar() != '\n' && getchar() != EOF);
     } else {
-        printf("Digite o valor\n");
+        printf("Digite o valor:\n");
         scanf("%f", valor1);
+        while (getchar() != '\n' && getchar() != EOF);
     }
 }
