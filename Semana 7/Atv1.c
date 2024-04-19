@@ -1,13 +1,31 @@
-/*
-    Ativade Desafio - Para Casa
-    Entregar via Pull Request para aula de 17/04/24
+#include <stdio.h>
+#include <stdlib.h>
 
-    Pegar a Atv1.c da Semana 6 e fazer:
+int main() {
+    FILE *arquivo;
+    //arquivo = fopen("./teste.txt", "w+");
+    arquivo = fopen("./teste.txt", "a+");
 
-    1. Ao encerrar o programa, salvar todas as informações in memory em um arquivo de texto.
-    2. Ao iniciar novamente o programa, ele deve importar, todas as informações que foram salvas no arquivo de texto.
+    if (!arquivo) {
+    printf("Erro ao abrir o arquivo.\n");
+    return 1;
+    }
 
-    Importante: Antes importar: Necessário validar se o arquivo de texto existe e se possui informações para armazenar.
+    fprintf(arquivo, "Incluindo novos dados.\n");
 
-*/
+    /* fprintf(arquivo, "Primeiros testes da aula de 17/04/2024.\n");
+    fprintf(arquivo, "Novo conteúdo.\n");
+    fseek(arquivo, 0, SEEK_SET);
+    
 
+    char str[1000];
+
+    fgets(str, sizeof(str), arquivo);
+    printf("Conteúdo do arquivo: \n%s", str);
+
+    */
+
+    fclose(arquivo);
+
+    return 0;
+}

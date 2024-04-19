@@ -1,10 +1,19 @@
 #include <stdio.h>
 
+void ihuu (int y) {
+    printf("%d", y);
+    y = 5;
+}
+
 int main() {
     int x = 0;
 
-    printf("%d\n", x++);
-    printf("%d\n", ++x);
+    ihuu(x++);
+    printf("%d", --x);
+    printf("%d", x++);
+
+
+    printf("\n%d", x);
 
     return 0;
 }
