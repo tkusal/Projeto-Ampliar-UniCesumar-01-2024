@@ -14,11 +14,12 @@ void entradaValores(int opcao, float *valor1, float *valor2);
 int main() {
     setlocale(LC_ALL, "portuguese");
 
-    int opc = 0;
+    int opc = 0, erro;
     float resultado, valor1, valor2;
     
     do {
         system("cls");
+        erro = 0;
 
         printf("Escolha uma opção:\n");
         printf("0. Sair\n");
@@ -57,7 +58,8 @@ int main() {
                 printf("Operação: divisão\n");
                 entradaValores(opc, &valor1, &valor2);
                 if (valor2 == 0) {
-                    printf("Não é possível dividir por 0! (Indefinido)");
+                    printf("Não é possível dividir por 0! (Indefinido)\n");
+                    erro = 1;
                     break;
                 }
                 resultado = valor1 / valor2;
@@ -66,7 +68,8 @@ int main() {
                 printf("Operação: raiz quadrada\n");
                 entradaValores(opc, &valor1, &valor2);
                 if (valor1 < 0) {
-                    printf("Não é possível calcular a raiz quadrada de um número negativo!");
+                    printf("Não é possível calcular a raiz quadrada de um número negativo!\n");
+                    erro = 1;
                     break;
                 }
                 resultado = sqrt(valor1);
@@ -76,7 +79,9 @@ int main() {
                 break;
         }
 
-        printf("\nResultado: %.2f\n", resultado);
+        if (!erro) {
+            printf("\nResultado: %.2f\n", resultado);
+        }
         system("pause");
 
     } while(1);
