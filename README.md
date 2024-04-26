@@ -34,9 +34,9 @@ Segue abaixo nosso cronograma:
 ---
 ## Pré-Requisitos
 
-Para ser possível praticarem os exercícios, precisarão de um editor de textos ou IDE instalado e um compilador (GCC).
+Para ser possível praticarem os exercícios, precisarão de um editor de textos ou IDE instalado e um compilador (GCC) e, recomendo também, que obtenham conhecimentos básicos de Git e GitHub para melhor interação com este repositório.
 
-Além disso, recomendo o aprendizado básico de Git e GitHub para elhor interação com este repositório: https://youtu.be/pyM5QLS2h6M?si=KsLYehtK8j0Bvba
+Curso básico de Git e GitHub: https://youtu.be/pyM5QLS2h6M?si=KsLYehtK8j0Bvba
 
 Alguns exemplos de editor de Texto ou IDE, com seus prós e contras, link para download e link para vídeo do YouTUbe mostrando como instalar/configurar.
 
