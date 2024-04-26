@@ -14,21 +14,21 @@ Caso queira fazer um networking, me siga no LinkedIn:
 ---
 Segue abaixo nosso cronograma:
 
-| Data       | Evento                                       |
-|:----------:|:--------------------------------------------:|
-| 29/04/2024 | Aula Inaugural com os Professores            |
-| 30/04/2024 | Início da Monitoria - Semana 1               |
-| 01/05/2024 | Feriado - Dia do trabalhador                 |
-| 07/05/2024 | Semana 2                                     |
-| 14/05/2024 | Semana 3                                     |
-| 21/05/2024 | Semana 4                                     |
-| 28/05/2024 | Semana de Provas - Não há monitoria          |
-| 04/06/2024 | Semana 5                                     |
-| 11/06/2024 | Semana 6                                     |
-| 18/06/2024 | Semana 7                                     |
-| 25/06/2024 | Semana 8 - Revisão                           |
-| 27/06/2024 | Última Aula                                  |
-| 01/07/2024 | Semana de Provas                             |
+| Data       | Evento                                         |
+|:----------:|:----------------------------------------------:|
+| 29/04/2024 | Aula Inaugural com os Professores              |
+| 30/04/2024 | Início - Semana 1 - Conceitos e Condicionais   |
+| 01/05/2024 | Feriado - Dia do trabalhador - Não há aula     |
+| 07/05/2024 | Semana 2 - Estruturas de Repetição             |
+| 14/05/2024 | Semana 3 - Estruturas Homogêneas               |
+| 21/05/2024 | Semana 4 - Estrutura Heterogêneas              |
+| 28/05/2024 | Semana de Provas - Não há monitoria            |
+| 04/06/2024 | Semana 5 - Sub-rotinas                         |
+| 11/06/2024 | Semana 6 - Ponteiros                           |
+| 18/06/2024 | Semana 7 - Manipulação de Arquivos             |
+| 25/06/2024 | Semana 8 - Revisão                             |
+| 27/06/2024 | Última Aula                                    |
+| 01/07/2024 | Semana de Provas                               |
 
 
 ---
