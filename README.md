@@ -8,7 +8,8 @@ Lembrando que as aulas acontecem toda **terça, quarta e quinta-feira**, das **2
 
 Mais informações, [clique aqui](https://sites.google.com/view/programa-ampliar/2024/tecnologias-522024/tecno-2024-mod-52/tecno-2024-52-algoritmo?authuser=0)!
 
-Caso queira fazer um networking, me siga no LinkedIn:
+Monitor:
+
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/tkusal/)
 
 ---
