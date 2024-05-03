@@ -23,7 +23,7 @@ int main() {
     media = (nota1 + nota2) / 2;
 
     //Saída de dados
-    printf("A media eh %.2f", media);
+    printf("A media eh %.25f", media);
 
     return 0;
 }
