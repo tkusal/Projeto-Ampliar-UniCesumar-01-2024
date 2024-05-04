@@ -1,35 +1,43 @@
 Projeto Ampliar - UniCesumar 
 ============
-**Algoritmos e Lógica de Programação** 📜 [51/2024]
+**Algoritmos e Lógica de Programação** 📜 [52/2024]
 
 Olá pessoal da monitoria do **Projeto Ampliar**, projeto de monitoria da UniCesumar! Este é o nosso espaço no GitHub, onde vamos armazenar as atividades que resolvemos juntos em sala e também aquelas que serão para casa. Aqui, queremos criar um ambiente bacana para compartilhar recursos e nos ajudar a dominar os desafios das aulas. E sabe por que estamos aqui? Para se aventurar no mundo do Git! Vamos começar **dando um fork** neste repositório e mergulhar de cabeça nesse universo de controle de versão.
 
 Lembrando que as aulas acontecem toda **terça, quarta e quinta-feira**, das **20:30 às 22:30**. Vamos explorar os mistérios dos Algoritmos e da Lógica de Programação, utilizando a **linguagem C** como nossa ferramenta principal. Estou empolgado para ver o que vamos aprender juntos! Nos vemos lá!
 
-Mais informações, [clique aqui](https://sites.google.com/view/programa-ampliar/2024/tecnologias-2024/tecno-2024-mod-51/tecno-2024-51-algoritmo?authuser=0)!
+Mais informações, [clique aqui](https://sites.google.com/view/programa-ampliar/2024/tecnologias-522024/tecno-2024-mod-52/tecno-2024-52-algoritmo?authuser=0)!
 
+Monitor:
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/tkusal/)
+
+---
 Segue abaixo nosso cronograma:
 
-| Data       | Evento                                       |
-|:----------:|:--------------------------------------------:|
-| 26/02/2024 | Aula Inaugural com os Professores e Monitores|
-| 27/02/2024 | Início da Monitoria - Semana 1               |
-| 05/03/2024 | Semana 2                                     |
-| 12/03/2024 | Semana 3                                     |
-| 18/03/2024 | Não há monitoria - Semana de Provas          |
-| 26/03/2024 | Semana 4                                     |
-| 29/03/2024 | Não há monitoria - Feriado                   |
-| 02/04/2024 | Semana 5                                     |
-| 09/04/2024 | Semana 6                                     |
-| 16/04/2024 | Semana 7                                     |
-| 15/04/2024 | Última Aula                                  |
-| 22/04/2024 | Semana de Provas                             |
+| Data       | Evento                                         |
+|:----------:|:----------------------------------------------:|
+| 29/04/2024 | Aula Inaugural com os Professores              |
+| 30/04/2024 | Início - Semana 1 - Conceitos e Condicionais   |
+| 01/05/2024 | Feriado - Dia do trabalhador - Não há aula     |
+| 07/05/2024 | Semana 2 - Estruturas de Repetição             |
+| 14/05/2024 | Semana 3 - Estruturas Homogêneas               |
+| 21/05/2024 | Semana 4 - Estrutura Heterogêneas              |
+| 28/05/2024 | Semana de Provas - Não há monitoria            |
+| 04/06/2024 | Semana 5 - Sub-rotinas                         |
+| 11/06/2024 | Semana 6 - Ponteiros                           |
+| 18/06/2024 | Semana 7 - Manipulação de Arquivos             |
+| 25/06/2024 | Semana 8 - Revisão                             |
+| 27/06/2024 | Última Aula                                    |
+| 01/07/2024 | Semana de Provas                               |
 
 
 ---
 ## Pré-Requisitos
 
-Para ser possível praticarem os exercícios, precisarão de um editor de textos ou IDE instalado e um compilador (GCC).
+Para ser possível praticarem os exercícios, precisarão de um editor de textos ou IDE instalado e um compilador (GCC) e, recomendo também, que obtenham conhecimentos básicos de Git e GitHub para melhor interação com este repositório.
+
+Curso básico de Git e GitHub: https://youtu.be/pyM5QLS2h6M?si=KsLYehtK8j0Bvba
 
 Alguns exemplos de editor de Texto ou IDE, com seus prós e contras, link para download e link para vídeo do YouTUbe mostrando como instalar/configurar.
 
@@ -74,7 +82,3 @@ Alguns exemplos de editor de Texto ou IDE, com seus prós e contras, link para d
 - **Contras**: Mais pesado em recursos, menos popular para desenvolvimento C/C++ em comparação com outras IDEs dedicadas.
 - **Download**: https://visualstudio.microsoft.com/pt-br/vs/community/
 - **YouTube**: https://youtu.be/pMT6qygEggI?si=uzxUNPFIovHN5imX
-
----
-### Monitor
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/tkusal/)

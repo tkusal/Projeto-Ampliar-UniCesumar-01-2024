@@ -1,12 +1,12 @@
 Semana 2
 ============
 
-* Estruturas de RepetiÃ§Ã£o
+* Estruturas de Repetição
 
 
 ---
 ## Mini aulas gravadas:
 
 ### Aula 3
-VÃ­deo: https://youtu.be/BoFqwaD28ow?si=vim89Xg-hWx3eaAT
-ExercÃ­cios: https://forms.gle/VYZNjXmKSzgmTjwc7
+Ví­deo: 
+Exercí­cios: 

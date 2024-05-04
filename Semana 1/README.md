@@ -1,7 +1,7 @@
 Semana 1
 ============
 
-* Conceitos b√°sicos de Algoritmos, L√≥gica e Linguagem C.
+* Conceitos b·sicos de Algoritmos, LÛgica e Linguagem C.
 * Estruturas Condicionais
 
 
@@ -9,9 +9,9 @@ Semana 1
 ## Mini aulas gravadas:
 
 ### Aula 1
-V√≠deo: https://youtu.be/jbL3jBRSwg0?si=10NWVyrxhrVLVGDk
-Exerc√≠cios: https://forms.gle/AGQgw4wxzShBWgdD9
+VÌdeo: https://youtu.be/jbL3jBRSwg0?si=fcXjHFNPxnVrN6Pb
+ExercÌ≠cios:  https://forms.gle/yPnYaxdLBPxQt1Ly8
 
 ### Aula 2
-V√≠deos: https://youtu.be/zKWeQmDZg98?si=-c3LYEf3X1TVZjIH
-Exerc√≠cios: https://forms.gle/KsRtd5ZarLVBjkGH9
+VÌ≠deo: https://youtu.be/zKWeQmDZg98?si=ms7pnaysIcCsb5iI
+ExercÌ≠cios: https://forms.gle/RQ7VaDoRLAT5pvuB9

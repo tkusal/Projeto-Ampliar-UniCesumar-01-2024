@@ -1,28 +1,29 @@
 /*
-Escreva um algoritmo que leia o nome de um aluno e suas duas notas de matemÃ¡tica.
-EntÃ£o, escreva na tela o nome e a mÃ©dia do aluno.
-*/ 
+    Escreva um algoritmo que leia duas notas de matemática de um aluno. 
+    Então, escreva na tela a média como saída.
+*/
 
+//standard IO (input/output) . header
 #include <stdio.h>
 
 int main() {
 
-    float n1;
-    float n2, result;
-    char aluno[10];
+    //Declaração de variáveis
+    float nota1, nota2;
+    float media;
 
-    printf("Insira o nome do aluno: ");
-    scanf("%s", aluno);
+    //Entrada de dados
+    printf("Escreva a primeira nota: \n");
+    scanf("%f", &nota1);
 
-    printf("Insira a primeira nota: ");
-    scanf("%f", &n1);
+    printf("Escreva a segunda nota: \n");
+    scanf("%f", &nota2);
 
-    printf("Insira a segunda nota: ");
-    scanf("%f", &n2);
+    //Processamento
+    media = (nota1 + nota2) / 2;
 
-    result = (n1+n2)/2;
+    //Saída de dados
+    printf("A media eh %.25f", media);
 
-    printf("A media do aluno %s eh de: %.2f", aluno, result);
-    
     return 0;
 }
