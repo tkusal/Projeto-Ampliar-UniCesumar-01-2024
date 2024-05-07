@@ -13,11 +13,11 @@ int main () {
     system("cls");
     
     if(idade < 18){
-        printf("Indivíduo menor de idade");  
+        printf("Individuo menor de idade");  
         
     }
     else if(idade >= 18){
-        printf("Indivíduo maior de idade");
+        printf("Individuo maior de idade");
         
     }
     

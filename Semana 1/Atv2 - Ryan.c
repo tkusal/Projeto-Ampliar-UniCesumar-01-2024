@@ -1,5 +1,5 @@
 /*
-    Escreva um programa em C que receba o salï¿½rio de uma pessoa e informe quanto ele pagarï¿½ de imposto de renda (alï¿½quota: 15%)
+    Escreva um programa em C que receba o salário de uma pessoa e informe quanto ele pagará de imposto de renda (alíquota: 15%)
 */
 
 #include <stdio.h>
@@ -15,7 +15,7 @@ int main(){
 
     imposto = salario * 0.15;
 
-    printf("O valor pago de imposto renda eh de %.2f!!!", imposto);
+    printf("O valor pago de imposto renda é de %.2f!!!", imposto);
 
 
    return 0;

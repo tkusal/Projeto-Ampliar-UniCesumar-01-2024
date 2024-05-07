@@ -7,12 +7,12 @@ int main() {
     
     float salario, imposto;
     
-    printf("Informe o salário: ");
+    printf("Informe o salario: ");
     scanf("%f", &salario);
     system("cls");
     
     imposto = salario * 0.15;
-    printf("O valor a pagar é de: %.2f", imposto );
+    printf("O valor a pagar � de: %.2f", imposto );
     
     return 0;
 }
