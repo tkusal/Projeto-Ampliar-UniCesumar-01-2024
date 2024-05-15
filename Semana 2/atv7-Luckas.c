@@ -27,8 +27,7 @@ do
           printf("Para realizar o cadastro escreva seu nome:\n");
           getchar();  //é usado para limpar o buffer de entrada após o usuário pressionar Enter                          
           scanf("%[^\n]", nome);               //garantindo que o programa aguarde corretamente.                          
-
-
+          
         if( strcmp(nome, "fim") == 0){
          
          printf("Encerrando programa");
