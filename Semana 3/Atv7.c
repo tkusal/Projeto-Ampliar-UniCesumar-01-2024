@@ -16,11 +16,14 @@ int main () {
         scanf("%d", &numero[i]);
     }
 
+//bubble sort
     for(int i = 0; i < 10; i++){
-        if(numero[i] > numero[i + 1] ){
-            aux = numero[i + 1];
-            numero[i + 1] = numero[i];
-            numero[i] = aux;
+        for (int j = 0; j < 10-i-1; j++) {
+            if(numero[j] > numero[j+1]) {
+            aux = numero[j];
+            numero[j] = numero[j+1];
+            numero[j+1] = aux;
+            }
         }        
     }
     

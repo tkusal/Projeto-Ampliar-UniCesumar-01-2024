@@ -18,6 +18,7 @@ int main () {
             aux = numero[j];
             numero[j] = numero[j+1];
             numero[j+1] = aux;
+            }
         }        
     }
     
